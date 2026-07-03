@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currículo - Lucas Denner</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #0056b3;
+            --secondary-color: #2c3e50;
+            --bg-color: #f4f7f6;
+            --card-bg: #ffffff;
+            --text-color: #333333;
+            --text-light: #666666;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding-bottom: 80px; 
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Cabecalho */
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: var(--card-bg);
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            animation: fadeInDown 1s ease-out;
+        }
+
+        h1 {
+            color: var(--secondary-color);
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            color: var(--text-light);
+        }
+
+        .contact-info a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .contact-info a:hover {
+            color: var(--primary-color);
+        }
+
+        .contact-info i {
+            color: var(--primary-color);
+            margin-right: 0.5rem;
+        }
+
+        /* Seções */
+        section {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            scroll-margin-top: 20px;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h2 {
+            color: var(--secondary-color);
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Grid */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Timeline */
+        .timeline-item {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 1.5rem;
+            border-left: 2px solid var(--primary-color);
+        }
+
+        .timeline-item h3 {
+            color: var(--secondary-color);
+            font-size: 1.1rem;
+        }
+
+        .timeline-item .date {
+            color: var(--primary-color);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Tags para Skills */
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-tag {
+            background: var(--primary-color);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* Listas */
+        .cert-list {
+            list-style: none;
+        }
+
+        .cert-list li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .cert-list li::before {
+            content: '\f0a3';
+            font-family: 'FontAwesome';
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-size: 0.8rem;
+            top: 5px;
+        }
+
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--card-bg);
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-around;
+            padding: 0.8rem 0;
+            z-index: 1000;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 0.8rem;
+            transition: var(--transition);
+            border: none;
+            background: none;
+            cursor: pointer;
+        }
+
+        .nav-item i {
+            font-size: 1.2rem;
+            margin-bottom: 4px;
+        }
+
+        .nav-item:hover {
+            color: var(--primary-color);
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        
+        @media print {
+            body { background: #fff; padding-bottom: 0; }
+            .container { padding: 0; max-width: 100%; }
+            header, section { box-shadow: none; padding: 1rem 0; margin-bottom: 1rem; page-break-inside: avoid; }
+            
+            section { opacity: 1 !important; transform: translateY(0) !important; }
+            
+            .bottom-nav { display: none !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header id="inicio">
+            <h1>Lucas Denner</h1>
+            <div class="subtitle">Técnico e Tecnólogo em formação</div>
+            
+            <div class="contact-info">
+                <span><i class="fas fa-map-marker-alt"></i> Parnamirim, RN</span>
+                <span><i class="fas fa-phone"></i> (84) 98785-8902</span>
+                <a href="mailto:lucasdenner.hs@live.com"><i class="fas fa-envelope"></i> lucasdenner.hs@live.com</a>
+                <a href="https://www.linkedin.com/in/lucasdennerhs30" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                <a href="https://github.com/ludhill/" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+            </div>
+        </header>
+
+        <section id="resumo" class="animate-on-scroll">
+            <h2><i class="fas fa-user"></i> Resumo Profissional</h2>
+            <p>Foco principal na solução de problemas por meio de sistemas web. Ofereço serviços para empresas e indústrias que buscam suporte com experiência em programação em sistemas ERP, automação e processos industriais.</p>
+        </section>
+
+        <section id="experiencia" class="animate-on-scroll">
+            <h2><i class="fas fa-briefcase"></i> Experiência</h2>
+            
+            <div class="timeline-item">
+                <h3>Assistente de produção - Singular Implants</h3>
+                <div class="date">Julho de 2023 - Atual | Parnamirim, RN</div>
+            </div>
+
+            <div class="timeline-item">
+                <h3>Desenvolvimento de software - Esigma Tecnologia</h3>
+                <div class="date">Fevereiro de 2023 - Abril de 2023 | Natal, RN</div>
+            </div>
+
+            <div class="timeline-item">
+                <h3>Desenvolvedor de sistemas - Prefeitura Municipal de Natal</h3>
+                <div class="date">Fevereiro de 2021 - Fevereiro de 2023 | Natal, RN</div>
+            </div>
+
+            <div class="timeline-item">
+                <h3>Operador de computador - Drogarias Globo</h3>
+                <div class="date">Dezembro de 2014 - Fevereiro de 2019</div>
+            </div>
+        </section>
+
+        <section id="formacao" class="animate-on-scroll">
+            <h2><i class="fas fa-graduation-cap"></i> Formação Acadêmica</h2>
+            
+            <div class="timeline-item">
+                <h3>Tecnólogo em Sistemas para Internet (TI) - IFRN</h3>
+                <div class="date">Março de 2024 - Previsão: Março de 2027</div>
+            </div>
+
+            <div class="timeline-item">
+                <h3>Ensino Técnico, Mecatrônica e Robótica - IFRN</h3>
+                <div class="date">Fevereiro de 2021 - Fevereiro de 2023</div>
+            </div>
+
+            <div class="timeline-item">
+                <h3>Bacharelado Interdisciplinar em Ciências e Tecnologia - UFRN</h3>
+                <div class="date">Janeiro de 2018 - Março de 2024</div>
+            </div>
+        </section>
+
+        <div class="grid-2">
+            <section class="animate-on-scroll">
+                <h2><i class="fas fa-tools"></i> Principais Competências</h2>
+                <div class="skills-list">
+                    <span class="skill-tag">Versionamento (Git)</span>
+                    <span class="skill-tag">Depuração</span>
+                    <span class="skill-tag">Sistemas Operacionais Embarcados</span>
+                    <span class="skill-tag">Automação</span>
+                    <span class="skill-tag">Desenvolvimento Web</span>
+                </div>
+            </section>
+
+            <section class="animate-on-scroll">
+                <h2><i class="fas fa-certificate"></i> Certificações & Adicionais</h2>
+                <ul class="cert-list">
+                    <li>Introdução ao Red Hat OpenShift Applications (DO101)</li>
+                    <li>Sistemas Embarcados (Embarcateh - FIC)</li>
+                    <li>Introdução a Micro Usinagem e Micro Ferramentas</li>
+                    <li>Técnico em Injeção Eletrônica</li>
+                    <li><strong>CNH:</strong> Categoria A/B</li>
+                    <li><strong>Idiomas:</strong> Inglês (Técnico/Intermediário - *Ajuste se necessário*)</li>
+                </ul>
+            </section>
+        </div>
+    </div>
+
+    <nav class="bottom-nav">
+        <a href="#inicio" class="nav-item">
+            <i class="fas fa-home"></i>
+            <span>Início</span>
+        </a>
+        <a href="#experiencia" class="nav-item">
+            <i class="fas fa-briefcase"></i>
+            <span>Experiência</span>
+        </a>
+        <a href="#formacao" class="nav-item">
+            <i class="fas fa-graduation-cap"></i>
+            <span>Formação</span>
+        </a>
+        <button onclick="window.print()" class="nav-item" title="Imprimir Currículo">
+            <i class="fas fa-print"></i>
+            <span>Imprimir</span>
+        </button>
+    </nav>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target); 
+                    }
+                });
+            }, observerOptions);
+
+            const sections = document.querySelectorAll('.animate-on-scroll');
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>
