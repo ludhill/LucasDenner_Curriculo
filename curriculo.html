@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currículo - Lucas Denner (Técnico em Mecatrônica)</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #2c3e50; /* Azul escuro industrial */
+            --accent-color: #16a085;  /* Verde técnico */
+            --pdf-color: #e74c3c;     /* Vermelho para o botão PDF */
+            --bg-color: #f5f7fa;
+            --card-bg: #ffffff;
+            --text-color: #2c3e50;
+            --text-light: #5a738e;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding-bottom: 90px; 
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Cabecalho */
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2.5rem 2rem;
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-top: 5px solid var(--primary-color);
+            animation: fadeInDown 1s ease-out;
+        }
+
+        header h1 {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 0.3rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .subtitle {
+            color: var(--accent-color);
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        .contact-info a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .contact-info a:hover {
+            color: var(--accent-color);
+        }
+
+        .contact-info i {
+            color: var(--accent-color);
+            margin-right: 0.5rem;
+        }
+
+        /* Seções */
+        section {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            scroll-margin-top: 20px;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h2 {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.4rem;
+        }
+
+        h2 i {
+            color: var(--accent-color);
+        }
+
+        /* Grid */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Timeline de Experiencia e Formacao */
+        .timeline-item {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 1.8rem;
+            border-left: 2px solid var(--accent-color);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 5px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--primary-color);
+        }
+
+        .timeline-item h3 {
+            color: var(--primary-color);
+            font-size: 1.15rem;
+            font-weight: 600;
+        }
+
+        .timeline-item .company {
+            color: var(--accent-color);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .timeline-item .date {
+            color: var(--text-light);
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+            font-style: italic;
+        }
+
+        .timeline-item p {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            text-align: justify;
+        }
+
+        /* Competências */
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-tag {
+            background: var(--primary-color);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        /* Certificações */
+        .cert-list {
+            list-style: none;
+        }
+
+        .cert-list li {
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+            font-size: 0.95rem;
+        }
+
+        .cert-list li::before {
+            content: '\f0ad'; /* Ícone de chave inglesa */
+            font-family: 'FontAwesome';
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-size: 0.85rem;
+            top: 3px;
+        }
+
+        /* BOTÃO FLUTUANTE (FAB) PARA PDF */
+        .pdf-fab {
+            position: fixed;
+            bottom: 95px;
+            right: 25px;
+            background-color: var(--pdf-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            z-index: 1001;
+            transition: var(--transition);
+        }
+
+        .pdf-fab:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 6px 20px rgba(231, 76, 60, 0.6);
+        }
+
+        /* BARRA DE NAVEGAÇÃO INFERIOR */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--card-bg);
+            box-shadow: 0 -4px 15px rgba(0,0,0,0.05);
+            display: flex;
+            justify-content: space-around;
+            padding: 0.8rem 0;
+            z-index: 1000;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            background: none;
+            cursor: pointer;
+        }
+
+        .nav-item i {
+            font-size: 1.3rem;
+            margin-bottom: 3px;
+        }
+
+        .nav-item:hover {
+            color: var(--accent-color);
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* AJUSTES OBRIGATÓRIOS PARA IMPRESSÃO PERFEITA EM PDF */
+        @media print {
+            body { background: #fff; padding-bottom: 0; color: #000; }
+            .container { padding: 0; max-width: 100%; }
+            header { border-top: none; padding: 1rem 0; margin-bottom: 2rem; box-shadow: none; }
+            section { box-shadow: none; padding: 1rem 0; margin-bottom: 1.5rem; page-break-inside: avoid; opacity: 1 !important; transform: translateY(0) !important; }
+            h2 { border-bottom: 2px solid #000; }
+            .pdf-fab, .bottom-nav { display: none !important; }
+            .skill-tag { border: 1px solid #000; color: #000; background: transparent; }
+        }
+    </style>
+</head>
+<body>
+
+    <button class="pdf-fab" onclick="window.print()" title="Salvar como PDF">
+        <i class="fas fa-file-pdf"></i>
+    </button>
+
+    <div class="container">
+        <header id="inicio">
+            <h1>Lucas Denner</h1>
+            <div class="subtitle">Técnico em Mecatrônica & Processos Industriais</div>
+            
+            <div class="contact-info">
+                <span><i class="fas fa-map-marker-alt"></i> Parnamirim, RN</span>
+                <span><i class="fas fa-phone"></i> (84) 98785-8902</span>
+                <a href="mailto:lucasdenner.hs@live.com"><i class="fas fa-envelope"></i> lucasdenner.hs@live.com</a>
+                <a href="https://www.linkedin.com/in/lucasdennerhs30" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                <a href="https://github.com/ludhill/" target="_blank"><i class="fab fa-github"></i> Portfólio Técnico</a>
+            </div>
+        </header>
+
+        <section id="resumo" class="animate-on-scroll">
+            <h2><i class="fas fa-industry"></i> Resumo Profissional</h2>
+            <p>Profissional com sólida formação técnica e acadêmica voltada para automação, processos industriais e manutenção mecânica/eletrônica. Experiência prática em ambiente de manufatura avançada (chão de fábrica), atuando diretamente no suporte operacional, controle de qualidade, parametrização de sistemas e soluções práticas para otimização de linhas de produção e processos integrados (sistemas ERP).</p>
+        </section>
+
+        <section id="experiencia" class="animate-on-scroll">
+            <h2><i class="fas fa-tools"></i> Experiência Profissional</h2>
+            
+            <div class="timeline-item">
+                <h3>Assistente de Produção</h3>
+                <div class="company">Singular Implants</div>
+                <div class="date">Julho de 2023 - Dezembro de 2025 | Parnamirim, RN</div>
+                <p>Atuação direta no ambiente fabril de implantes e componentes de alta precisão. Monitoramento de linhas produtivas, controle de qualidade visual e dimensional, operação e acompanhamento de maquinários técnicos e cumprimento de rigorosas normas de segurança e padrões operacionais industriais.</p>
+            </div>
+
+            <div class="timeline-item">
+                <h3>Suporte Técnico & Automação de Sistemas</h3>
+                <div class="company">Prefeitura Municipal de Natal / Esigma Tecnologia</div>
+                <div class="date">Fevereiro de 2021 - Abril de 2023 | Natal, RN</div>
+                <p>Responsável pelo diagnóstico de falhas, parametrização e testes de sistemas de automação de dados e processos internos. Monitoramento de fluxos operacionais e suporte técnico preventivo e corretivo focado na estabilidade de sistemas ERP industriais e administrativos.</p>
+            </div>
+
+            <div class="timeline-item">
+                <h3>Operador de Computador / Sistemas Operacionais</h3>
+                <div class="company">Drogarias Globo</div>
+                <div class="date">Dezembro de 2014 - Fevereiro de 2019</div>
+                <p>Controle de fluxos internos de dados operacionais, inventários informatizados, tratamento de inconformidades em sistemas de estoque e operação de terminais comerciais integrados.</p>
+            </div>
+        </section>
+
+        <section id="formacao" class="animate-on-scroll">
+            <h2><i class="fas fa-graduation-cap"></i> Formação Acadêmica</h2>
+            
+            <div class="timeline-item">
+                <h3>Ensino Técnico em Mecatrônica</h3>
+                <div class="company">IFRN - Instituto Federal do Rio Grande do Norte</div>
+                <div class="date">Fevereiro de 2021 - Fevereiro de 2023</div>
+                <p>Foco em Robótica, Engenharia de Controle, Automação Industrial, Sistemas Hidráulicos/Pneumáticos, Eletricidade Industrial e Projetos Eletromecânicos.</p>
+            </div>
+
+            <div class="timeline-item">
+                <h3>Bacharelado Interdisciplinar em Ciências e Tecnologia (Ênfase Engenharia)</h3>
+                <div class="company">UFRN - Universidade Federal do Rio Grande do Norte</div>
+                <div class="date">Janeiro de 2018 - Março de 2024</div>
+                <p>Sólida base conceitual em fenômenos de transporte, resistência dos materiais, física aplicada, matemática avançada e introdução aos processos de engenharia.</p>
+            </div>
+
+            <div class="timeline-item">
+                <h3>Tecnólogo em Sistemas para Internet (TI Aplicada)</h3>
+                <div class="company">IFRN - Instituto Federal do Rio Grande do Norte</div>
+                <div class="date">Março de 2024 - Previsão: Março de 2027</div>
+                <p>Desenvolvimento complementar voltado para a integração de redes locais, monitoramento remoto de dados e interfaces de controle.</p>
+            </div>
+        </section>
+
+        <div class="grid-2">
+            <section class="animate-on-scroll">
+                <h2><i class="fas fa-cogs"></i> Habilidades Técnicas</h2>
+                <div class="skills-list">
+                    <span class="skill-tag">Automação Industrial</span>
+                    <span class="skill-tag">Sistemas Embarcados</span>
+                    <span class="skill-tag">Manutenção Corretiva</span>
+                    <span class="skill-tag">Depuração de Falhas</span>
+                    <span class="skill-tag">Micro Usinagem</span>
+                    <span class="skill-tag">Leitura de Esquemas Técnicos</span>
+                    <span class="skill-tag">Sistemas ERP</span>
+                </div>
+            </section>
+
+            <section class="animate-on-scroll">
+                <h2><i class="fas fa-id-card"></i> Certificados & Adicionais</h2>
+                <ul class="cert-list">
+                    <li><strong>Técnico em Injeção Eletrônica</strong></li>
+                    <li>Sistemas Embarcados (Embarcateh - FIC)</li>
+                    <li>Introdução a Micro Usinagem e Micro Ferramentas</li>
+                    <li>Introduction to Red Hat OpenShift Applications (DO101)</li>
+                    <li><strong>Habilitação (CNH):</strong> Categoria A/B (Disponibilidade para deslocamentos)</li>
+                    <li><strong>Perfil:</strong> Proativo, focado em segurança operacional e organização.</li>
+                </ul>
+            </section>
+        </div>
+    </div>
+
+    <nav class="bottom-nav">
+        <a href="#inicio" class="nav-item">
+            <i class="fas fa-home"></i>
+            <span>Início</span>
+        </a>
+        <a href="#experiencia" class="nav-item">
+            <i class="fas fa-wrench"></i>
+            <span>Experiência</span>
+        </a>
+        <a href="#formacao" class="nav-item">
+            <i class="fas fa-graduation-cap"></i>
+            <span>Formação</span>
+        </a>
+        <button onclick="window.print()" class="nav-item">
+            <i class="fas fa-print"></i>
+            <span>Imprimir</span>
+        </button>
+    </nav>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target); 
+                    }
+                });
+            }, observerOptions);
+
+            const sections = document.querySelectorAll('.animate-on-scroll');
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>
+
+
